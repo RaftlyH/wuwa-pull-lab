@@ -1,6 +1,6 @@
 """Exact state probabilities, independent of the Monte Carlo implementation."""
 import numpy as np
-from rules import Rules, maximum_pulls
+from .rules import Rules, maximum_pulls
 
 
 def exact_cdf(rules: Rules, pity=0, guaranteed=False, copies=1):

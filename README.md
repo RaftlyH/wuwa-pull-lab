@@ -52,12 +52,12 @@ Two selectable models:
 - **Default simplified model:** 0.8% on pulls 1–79; 100% on pull 80. This intentionally omits soft pity and does not reproduce the published aggregate rate.
 - **Illustrative soft pity:** editable linear increase starting on the selected pull; rates are capped at 100%, with pull 80 always guaranteed. Defaults of pull 66 and +6 percentage points per pull are illustrative assumptions, not official rules or a fitted estimate. On pull 66 the default illustrative chance is 6.8%, on 67 it is 12.8%, etc.
 
-For an accurately calibrated game calculator, replace the rates in rules.py with a sourced or carefully fitted probability table, document the data and uncertainty, and rerun the validation. Public banner rules supply configuration data; trial CSVs are generated simulations, not real player histories.
+For an accurately calibrated game calculator, replace the rates in `wuwa_pull_lab/rules.py` with a sourced or carefully fitted probability table, document the data and uncertainty, and rerun the validation. Public banner rules supply configuration data; trial CSVs are generated simulations, not real player histories.
 
 ## How the calculations work
 
-- simulator.py uses NumPy random draws. Each trial continues until the entire goal is reached, even beyond the user's budget. This avoids averaging only lucky, successful-within-budget trials.
-- analysis.py propagates state probabilities over pity, guarantee and copy count. Completed goals become absorbing outcomes. The cumulative probability of completion is computed without sampling error.
+- `wuwa_pull_lab/simulator.py` uses NumPy random draws. Each trial continues until the entire goal is reached, even beyond the user's budget. This avoids averaging only lucky, successful-within-budget trials.
+- `wuwa_pull_lab/analysis.py` propagates state probabilities over pity, guarantee and copy count. Completed goals become absorbing outcomes. The cumulative probability of completion is computed without sampling error.
 - “Exact model” means exact for these assumptions (up to floating-point rounding), **not exact game odds**.
 - Success probability means completing the entire selected goal within the available pulls.
 - Mean pulls is the unconditional mean to complete the goal, not the average among only trials within the budget.
@@ -70,12 +70,14 @@ For an accurately calibrated game calculator, replace the rates in rules.py with
 
 | File | Purpose |
 |---|---|
-| rules.py | Probability table and input validation; start reading here |
-| simulator.py | Vectorized random pulls and pity/guarantee transitions |
-| analysis.py | Independent exact probability calculation |
+| wuwa_pull_lab/rules.py | Probability table and input validation; start reading here |
+| wuwa_pull_lab/simulator.py | Vectorized random pulls and pity/guarantee transitions |
+| wuwa_pull_lab/analysis.py | Independent exact probability calculation |
 | app.py | Inputs, charts, summaries, CSV/JSON exports |
 | requirements.txt | Packages to install |
 | tests/test_probability.py | Boundary cases and independent simulation checks |
+
+The `wuwa_pull_lab/` package holds the calculation code, while `app.py` stays at the project root as the dashboard entry point. Local environments and generated Python caches are excluded from Git by `.gitignore`.
 
 ## Validate
 

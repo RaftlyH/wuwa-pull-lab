@@ -1,8 +1,8 @@
 import unittest
 import numpy as np
-from rules import Rules, maximum_pulls
-from simulator import simulate
-from analysis import exact_cdf
+from wuwa_pull_lab.rules import Rules, maximum_pulls
+from wuwa_pull_lab.simulator import simulate
+from wuwa_pull_lab.analysis import exact_cdf
 
 class ProbabilityTests(unittest.TestCase):
     def test_first_pull(self):

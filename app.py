@@ -4,9 +4,9 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
-from rules import Rules, maximum_pulls
-from simulator import simulate
-from analysis import exact_cdf, empirical_cdf, threshold
+from wuwa_pull_lab.rules import Rules, maximum_pulls
+from wuwa_pull_lab.simulator import simulate
+from wuwa_pull_lab.analysis import exact_cdf, empirical_cdf, threshold
 
 st.set_page_config(page_title='WuWa Pull Lab', page_icon='🌊', layout='wide')
 st.title('WuWa Pull Lab')

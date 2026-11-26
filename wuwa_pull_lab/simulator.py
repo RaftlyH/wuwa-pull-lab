@@ -1,6 +1,6 @@
 """Monte Carlo simulation. Every trial runs all the way to the copy goal."""
 import numpy as np
-from rules import Rules, maximum_pulls
+from .rules import Rules, maximum_pulls
 
 
 def simulate(rules: Rules, pity=0, guaranteed=False, copies=1,

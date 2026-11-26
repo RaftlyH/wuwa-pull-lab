@@ -2,6 +2,14 @@
 
 A Python + Streamlit + Plotly learning project for featured Resonator pulls.
 
+## Use the website
+
+Open **https://raftlyh.github.io/wuwa-pull-lab/** to use the browser dashboard. All calculations run on your device; no Python installation or account is needed.
+
+The GitHub Pages version lives in `docs/` and includes exact probability curves, seeded Monte Carlo simulations, budget milestones, trial previews, and CSV/JSON downloads. The original Streamlit app remains available for local use below. Both use the same probability assumptions. Their random generators differ, so the same seed does not produce identical trials across the two versions.
+
+GitHub Pages publishes `docs/` from the `main` branch. Push changes to that directory to update the website. To preview it locally, serve `docs/` with a local web server (for example, `python -m http.server 8000 --directory docs`) and open `http://localhost:8000`. A web server is required for the calculation worker; opening the HTML file directly is not supported.
+
 ## Start on Windows
 
 Install Python 3.10 or later first. Extract this ZIP, then open a terminal **inside the folder containing app.py**. In VS Code, open that folder and choose Terminal > New Terminal.
@@ -76,6 +84,8 @@ For an accurately calibrated game calculator, replace the rates in `wuwa_pull_la
 | app.py | Inputs, charts, summaries, CSV/JSON exports |
 | requirements.txt | Packages to install |
 | tests/test_probability.py | Boundary cases and independent simulation checks |
+| docs/ | Browser dashboard and calculator published with GitHub Pages |
+| tests/test_browser_engine.py | Browser/Python agreement and browser simulation checks (requires Node.js) |
 
 The `wuwa_pull_lab/` package holds the calculation code, while `app.py` stays at the project root as the dashboard entry point. Local environments and generated Python caches are excluded from Git by `.gitignore`.
 
@@ -88,5 +98,7 @@ From the project folder:
 ```
 
 Tests cover first-pull probabilities, hard pity, guarantees, multiple copies, cumulative probabilities, reproducibility, invalid pity, and Monte Carlo agreement with exact calculations.
+
+Install Node.js to run the browser engine checks as part of this suite. They compare browser probability curves with the independent Python calculation and check seeded simulations, boundaries, and invalid inputs.
 
 Documentation: https://docs.streamlit.io/ and https://plotly.com/python/
